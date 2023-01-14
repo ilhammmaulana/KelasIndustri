@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins' sans-serif;
+}
+#home{
+	height: 80vh;
+}
+html , body{
+	overflow-x: hidden;
+}
+#img-user{
+	width: 5rem ;
+	height: 5rem ;
+	overflow: hidden;
+}
+#img-user img{
+ width: 100%;
+}
+
+
+.bg-theme{
+	background-color: hsl(227, 75%, 14%);
+}
+.contains{
+	justify-content: center;
+	gap: 2rem;
+}
+
+table.table-scroll{
+	width: 200px !important;
+	height: auto;
+}
+table.table-scroll tr > td, table.table-scroll tr > th{
+	padding: .4rem .8rem;
+	border-top:  .2px solid;
+	border-bottom:  .2px solid;
+
+}
+@media only screen and (max-width: 768px){
+	.contains{
+		flex-direction: column !important;
+	}
+}
+#btn-show-mahasiswa{
+	width: 160px;
+	
+}
