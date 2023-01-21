@@ -15,7 +15,7 @@ use App\Models\Mahasiswa;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [MahasiswaController::class , 'view']); 
+Route::get('/', [MahasiswaController::class , 'view']);
 Route::prefix('/')->group(function(){
     Route::post('/add', [MahasiswaController::class, 'add']);
     Route::post('/edit', [MahasiswaController::class, 'update']);

@@ -1,0 +1,20 @@
+{
+    "todos": [
+        {
+            "aktifitas": "Belajar",
+            "tanggal": "Januari 2022",
+            "nama_siswa": "Khoirun"
+        },
+        {
+            "aktifitas": "Coding",
+            "tanggal": "Januari 2022",
+            "nama_siswa": "Nisa"
+        },
+        {
+            "aktifitas": "Ngoding",
+            "tanggal": "September 2006",
+            "nama_siswa": "Ilham Maulana"
+        }
+
+    ]
+}
