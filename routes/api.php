@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\TodosController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::prefix('/todos')->group(function(){
+    Route::get('/', [TodosController::class, 'getAllTodos']); 
+    Route::post('/create', [TodosController::class, 'create']); 
+    Route::patch('/update/{id}', [TodosController::class, 'update']); 
+    Route::delete('/delete/{id}', [TodosController::class, 'delete']); 
+});
+
+

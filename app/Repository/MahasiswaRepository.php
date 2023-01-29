@@ -2,12 +2,8 @@
 
 namespace App\Repository;
 use App\Models\Mahasiswa;
-use App\Models\User;
 use App\Service\MahasiswaService;
-use Attribute;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Storage; 
-use Illuminate\Support\Facades\Redis;
 
 class MahasiswaRepository extends Mahasiswa
 {
