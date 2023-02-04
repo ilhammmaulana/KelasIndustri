@@ -1,0 +1,25 @@
+1.FitureAuthentifikasi,
+    -Register,
+    -Login,
+    -Logout,
+    -Alternative Login with media sosial , Google, Facebook dll
+    -Keamanan standar JWT , OAUTH , token
+    -middlewware
+2.Lupa Kata sandi
+3.Get Bahan pangan list dengan total gizi
+4.Search bahan pangan
+5.Filter bahan pangan
+6.get Detail bahan pangan dan semua gizi yang terekandung
+7.individu
+8.Create Individu
+    -Memberikan data provinsi dll
+9. Get Schedule makan hari ini setiap individu , total bahan pangan, 
+10.CRUD Schedule makan
+11.Get list all bahan pangan ketika create schedule makan ada dropdown menu bahan pangan makanya perlu GET BAHAN PANGAN 
+12. Kalkulasi Informasi nilai gizi sesuai total bahan pangan 
+13.CRUD Populasi
+14. Get list provinsi , kabupaten , 
+15.Tambah Data individu Melalui file exel
+16.Edit Profile
+17. CRUD INDIVIDU,
+

@@ -20,23 +20,23 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::prefix('/todos')->middleware('auth:sanctum')->group(function(){
-    Route::get('/', [TodosController::class, 'getAllTodos']); 
-    Route::post('/create', [TodosController::class, 'create']); 
-    Route::patch('/update/{id}', [TodosController::class, 'update']); 
-    Route::delete('/delete/{id}', [TodosController::class, 'delete']); 
+Route::prefix('/todos')->middleware('auth:sanctum')->group(function () {
+    Route::get('/', [TodosController::class, 'getAllTodos']);
+    Route::post('/create', [TodosController::class, 'create']);
+    Route::patch('/update/{id}', [TodosController::class, 'update']);
+    Route::delete('/delete/{id}', [TodosController::class, 'delete']);
 });
 
 
 // USER CRUD
 Route::get('/users', [UserController::class, 'getAllUser']);
 Route::post('/users/update/{id}', [UserController::class, 'update']);
-Route::delete('users/delete/{id}', [UserController::class, 'delete'] );
+Route::delete('users/delete/{id}', [UserController::class, 'delete']);
 
 
-Route::prefix('/auth')->group(function(){
-    Route::post('/login', [AuthController::class, 'login'] );
-    Route::post('/register', [AuthController::class, 'register'] );
+Route::prefix('/auth')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
 });
 
 

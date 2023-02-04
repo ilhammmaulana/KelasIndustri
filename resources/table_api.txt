@@ -1,0 +1,97 @@
+
+Ilham Maulana
+
+user :{
+    name,
+    email,
+    access_token,
+    refresh_token,
+    fcm_id,
+    phone,
+    password,
+    status,
+    img_url,
+    img
+}
+
+bahan_pangan:{
+    code,
+    name,
+    id_category,
+    (total_kandungan bisa dihitung tidak perlu sisimpan di database)
+}
+
+kandungan_bahan_pangan:{
+    id_bahan_pangan,
+    kandungan,
+    total,
+    status,
+}
+
+cattegory: {
+    id,
+    name,
+}
+
+provinsi {
+    id,
+    name(foreign_key), 
+    code,   
+}
+
+kabupaten: {
+    id,
+    id_provinsi(foreign_key),
+    name
+}
+kecamatan: {
+    id,
+    id_kabupaten (foreign_key),
+    name
+}
+kelurahan: {
+    id,
+    id_kecamatan,
+    name,
+}
+
+individu:{
+    id,
+    id_provinsi,
+    id_kabupaten,
+    id_kecamatan,
+    id_kelurahan,
+    name,
+    date_of_birth,
+    age,
+    gender,
+    kondisi_fisik,
+    triester_hamil,
+    kesehatan,
+    berat_badan,
+    id_populasi,
+    tinggi_badan, 
+
+}
+
+schedule_makan: {
+    id,
+    id_individu
+    id_bahan_pangan,
+    cattegory,
+    berat_bahan_pangan,
+    waktu_makan,
+
+}
+
+populasi:{
+    id,
+    id_provinsi,
+    id_kabupaten,
+    id_kecamatan,
+    nama_populasi,
+}
+
+
+
+
