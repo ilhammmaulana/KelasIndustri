@@ -20,7 +20,7 @@ class UserController extends Controller
     }
     public function delete($id)
     {
-     return UserRepository::deleteUser($id);
+        return UserRepository::deleteUser($id);
     }
     public function update(Request $request, $id)
     {
@@ -28,31 +28,30 @@ class UserController extends Controller
             'name' => 'required',
             'phone' => 'required',
         ]);
-        
-        if($validation->fails()){
+
+        if ($validation->fails()) {
             return $this->badRequest('Failed!', $validation->errors());
         }
-        
+
         $user = User::find($id);
-        if(!$user){
-            return $this->requestNotFound("Not Found!",["msg" => "user not found", "params" => "id"]);
+        if (!$user) {
+            return $this->requestNotFound("Not Found!", ["msg" => "user not found", "params" => "id"]);
         }
         // Validation when user doesnt have photo
         try {
-            if($user->photo !== null && $request->file('photo')){
+            if ($user->photo !== null && $request->file('photo')) {
                 Storage::delete("/photos/" . $user->photo);
                 $file = $request->file('photo');
                 $path = Storage::disk('public')->put('photos', $file);
                 $getImageRandomName = pathinfo($path)["basename"];
-                $url = url('public/'. $path);
+                $url = url('public/' . $path);
                 $user->url_photo = $url;
                 $user->photo = $getImageRandomName;
-
             }
             $user->name = $request->name;
             $user->phone = $request->phone;
             $user->save();
-            return $this->requestSuccess('Success updated user!');  
+            return $this->requestSuccess('Success updated user!');
         } catch (\Throwable $th) {
             return $this->badRequest('Failed!', $th);
         }

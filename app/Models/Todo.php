@@ -18,4 +18,3 @@ class Todo extends Model
         'created_at'
     ];
 }
-    

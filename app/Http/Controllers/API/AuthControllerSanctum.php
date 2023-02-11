@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 
 
-class AuthController extends Controller
+class AuthControllerSanctum extends Controller
 {
     use ResponseApi;
     public function login(Request $request)

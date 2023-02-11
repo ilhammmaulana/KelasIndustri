@@ -1,22 +1,25 @@
 <?php
+
 namespace App\Repository;
 
 use App\Models\Todo;
 use App\Traits\ResponseApi;
+use Illuminate\Support\Facades\Auth;
 
-class TodoRepository {
+class TodoRepository
+{
     use ResponseApi;
     public static function findTodo($id)
     {
         $data = Todo::find($id);
-        if(!$data){
+        if (!$data || $data->created_by !== Auth::user()->id) {
             return ResponseApi::requestNotFound('Not Found');
         }
         return ResponseApi::requestSuccessData('Success!', $data);
-    } 
-    public static function getAll()
+    }
+    public static function getAllTodoByUserId($idUser)
     {
-        $data = Todo::get();
+        $data = Todo::where('created_by', $idUser)->get();
         return $data;
     }
     public static function createTodo($data)
@@ -26,11 +29,11 @@ class TodoRepository {
     }
     public static function updateTodo($id)
     {
-        global $request;   
+        global $request;
         $input = $request->only('title', 'description');
         $todo = Todo::find($id);
-        if(!$todo){
-            return ResponseAPI::requestNotFound("Failed!",["msg" => "Todo not found", "params" => "id"]);
+        if (!$todo || $todo->created_by !== Auth::user()->id) {
+            return ResponseAPI::requestNotFound("Not Found!");
         }
         $todo->title = $input['title'];
         $todo->description = $input['description'];
@@ -39,11 +42,11 @@ class TodoRepository {
     }
     public static function deleteTodo($id)
     {
-     $todo = Todo::find($id);
-     if(!$todo){
-        return ResponseApi::requestNotFound('Not Found');
-     }   
-     $todo->delete();
-     return ResponseApi::requestSuccess('Success Deleted');
+        $todo = Todo::find($id);
+        if (!$todo || $todo->created_by !== Auth::user()->id) {
+            return ResponseAPI::requestNotFound("Not Found!");
+        }
+        $todo->delete();
+        return ResponseApi::requestSuccess('Success Deleted');
     }
 }

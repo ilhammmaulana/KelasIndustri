@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use DateTime;
+use DateTimeZone;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +18,16 @@ class TodoFactory extends Factory
      */
     public function definition()
     {
+
+        $date = (new DateTime())->setTimezone(new DateTimeZone('Asia/Jakarta'));
         return [
-            "title" => fake()->words(6),
-            "description" => fake()->words(10),
+            "title" => fake()->paragraph(1),
+            "description" => fake()->paragraph(5),
             "created_by" => rand(1, 10),
+            "done" => false,
+            'created_at' => $date,
+            'updated_at' => $date
+
         ];
     }
 }

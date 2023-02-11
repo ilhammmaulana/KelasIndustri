@@ -1,30 +1,33 @@
 <?php
+
 namespace App\Repository;
 
 use App\Models\User;
 use App\Traits\ResponseApi;
 use Illuminate\Support\Facades\Storage;
 
-class UserRepository extends User{
-    public static function get(){
-        $data = User::get(['id','name', 'email', 'photo', 'url_photo']);
+class UserRepository extends User
+{
+    public static function get()
+    {
+        $data = User::get(['id', 'name', 'email', 'photo', 'url_photo']);
         return ResponseApi::requestSuccessData('Success', $data);
     }
     public static function deleteUser($id)
     {
         $user = User::find($id);
-        if(!$user){
-            return ResponseApi::requestNotFound("Not Found!",["msg" => "user not found", "params" => "id"]);
+        if (!$user) {
+            return ResponseApi::requestNotFound("Not Found!", ["msg" => "user not found", "params" => "id"]);
         }
-        if($user->photo !== null){
+        if ($user->photo !== null) {
             Storage::delete("/photos/" . $user->photo);
-        }   
+        }
         $user->delete();
         return ResponseApi::requestSuccess('Success deleted user!');
     }
     // public static function updateUser($id, $data)
     // {
-        
+
     //     $user = User::find($id);
     //     if(!$user){
     //         return ResponseApi::requestNotFound("Not Found!",["msg" => "user not found", "params" => "id"]);

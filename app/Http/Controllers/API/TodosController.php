@@ -16,7 +16,7 @@ class TodosController extends Controller
 
     public function getAllTodos()
     {
-        $todos = TodoService::getAllTodo();
+        $todos = TodoService::getaLL();
         return $this->requestSuccessData('Success!', $todos);
     }
     public function create(Request $request)
@@ -47,7 +47,6 @@ class TodosController extends Controller
             return $this->responseValidation('Failed!', $validation->errors());
         }
 
-        $udpate = TodoRepository::updateTodo($id);
         return TodoRepository::updateTodo($id);
     }
     public function delete($id)
